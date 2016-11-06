@@ -1,2 +1,3 @@
 # ILucene
-Proyecto II : Information Retrieval
+* Proyecto II : Information Retrieval
+* Plataforma : Java Netbeans on Wandows 
