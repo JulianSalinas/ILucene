@@ -1,3 +1,3 @@
 # ILucene
 * Proyecto II : Information Retrieval
-* Plataforma : Java Netbeans on Wandows 
+* IDE(s) : Netbeans e IntelliJ IDEA en Wangblows
