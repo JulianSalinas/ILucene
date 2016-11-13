@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Usar solamente el metodo estatico findFromFile(String path)
+ * Usar solamente el metodo estatico findFromFiles(String path)
  */
 
 public class Article {
@@ -37,10 +37,13 @@ public class Article {
         exchanges = findMultipleFields(element,"EXCHANGES");
     }
 
-    public static ArrayList<Article> findFromFile(String path) throws Exception{
-        File file = readFile(path);
-        Document document = buildDocument(file);
-        return findFromDocument(document);
+    public static ArrayList<Article> findFromFiles(ArrayList<File> files) throws Exception{
+        ArrayList<Article>articles = new ArrayList<>();
+        for(File file : files) {
+            Document document = buildDocument(file);
+            articles.addAll(findFromDocument(document));
+        }
+        return articles;
     }
 
     private static ArrayList<Article> findFromDocument(Document document) throws Exception{
@@ -93,10 +96,9 @@ public class Article {
         return document;
     }
 
-    private static File readFile(String path) throws Exception {
-        File file = new File(path);
-        if(file.exists()){ return file; }
-        else{ throw new Exception("El archivo no existe"); }
+    public static void printAll(ArrayList<Article>articles){
+        for(Article article : articles)
+            System.out.println(article);
     }
 
     @Override

@@ -55,20 +55,12 @@ public class Window extends JFrame{
     }
 
     public void changePanel(int panel){
-        if(panel == 0) {
-            indexer.setVisible(true);
-            browser.setVisible(false);
-        }
-        else{
-            indexer.setVisible(false);
-            browser.setVisible(true);
-        }
+        if(panel == 0) { indexer.setVisible(true); browser.setVisible(false); }
+        else{ indexer.setVisible(false); browser.setVisible(true); }
     }
 
     public void showMessage (String message) {
-        JOptionPane.showMessageDialog(
-                null, message, "Información",
-                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
