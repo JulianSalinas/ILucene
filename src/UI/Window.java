@@ -1,6 +1,7 @@
 package UI;
 
 import javax.swing.*;
+
 import static javax.swing.UIManager.setLookAndFeel;
 
 public class Window extends JFrame{
@@ -48,7 +49,7 @@ public class Window extends JFrame{
 
     private void setWallpaper(){
         wallpaper = new JLabel();
-        ImageIcon image = new ImageIcon(getClass().getResource("/UI/Totoro.jpg"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/Customizables/Totoro.jpg"));
         wallpaper.setIcon(image);
         wallpaper.setSize(getSize());
         getContentPane().add(wallpaper);

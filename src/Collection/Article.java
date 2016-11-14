@@ -15,15 +15,25 @@ import java.util.ArrayList;
 
 public class Article {
 
-    public String id;
-    public String body;
-    public String title;
-    public String author;
-    public String date;
-    public ArrayList<String> topics;
-    public ArrayList<String> places;
-    public ArrayList<String> orgs;
-    public ArrayList<String> exchanges;
+    private String id;
+    private String body;
+    private String title;
+    private String author;
+    private String date;
+    private ArrayList<String> topics;
+    private ArrayList<String> places;
+    private ArrayList<String> orgs;
+    private ArrayList<String> exchanges;
+
+    public String getId(){ return id; }
+    public String getBody(){ return body; }
+    public String getTitle(){ return title; }
+    public String getAuthor(){ return author; }
+    public String getDate(){ return id; }
+    public ArrayList<String>getTopics(){ return topics; }
+    public ArrayList<String>getPlaces(){ return places; }
+    public ArrayList<String>getOrgs(){ return orgs; }
+    public ArrayList<String>getExchanges(){ return exchanges; }
 
     private Article (Element element, Element text){
         id = element.getAttribute("NEWID");

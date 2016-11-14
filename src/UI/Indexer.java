@@ -17,6 +17,7 @@ public class Indexer extends JPanel {
     private JList<File>files;
     private JButton buttonAddFile;
     private JButton buttonRemoveFile;
+    private JButton buttonOpenFile;
     private JButton buttonIndexFiles;
 
     public Indexer(){
@@ -44,20 +45,25 @@ public class Indexer extends JPanel {
 
     private void setLists(){
         files = new JList<>();
-        files.setBounds(25,70,700,330);
         files.setModel(new DefaultListModel<>());
-        add(files);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(25,70,700,330);
+        scrollPane.setViewportView(files);
+        add(scrollPane);
     }
 
     private void setButtons() {
         buttonAddFile = new JButton("Añadir");
         buttonRemoveFile = new JButton("Remover");
+        buttonOpenFile = new JButton("Visualizar");
         buttonIndexFiles = new JButton("Indexar");
         buttonAddFile.setBounds(740,70,200,50);
         buttonRemoveFile.setBounds(740,120,200,50);
-        buttonIndexFiles.setBounds(740,170,200,50);
+        buttonOpenFile.setBounds(740,170,200,50);
+        buttonIndexFiles.setBounds(740,220,200,50);
         add(buttonAddFile);
         add(buttonRemoveFile);
+        add(buttonOpenFile);
         add(buttonIndexFiles);
     }
 
@@ -65,6 +71,7 @@ public class Indexer extends JPanel {
         buttonAddFile.addActionListener(actionEvent -> { addSelectedFiles(); });
         buttonRemoveFile.addActionListener(actionEvent -> { removeSelectedFiles(); });
         buttonIndexFiles.addActionListener(actionEvent -> { indexSelectedFiles(); });
+        buttonOpenFile.addActionListener(actionEvent -> { openSelectedFile(); });
     }
 
     private void setFileChooser(){
@@ -109,6 +116,15 @@ public class Indexer extends JPanel {
             Article.printAll(articles);
         }
         catch (Exception e){Window.Instance().showMessage(e.getMessage());}
+    }
+
+    private void openSelectedFile(){
+        try {
+            File file = files.getSelectedValue();
+            Desktop.getDesktop().open(file);
+        }
+        catch (NullPointerException e){ Window.Instance().showMessage("No hay ningun archio seleccionado"); }
+        catch (Exception e ){ Window.Instance().showMessage("No se ha podido abrir el archivo");}
     }
 
 }
