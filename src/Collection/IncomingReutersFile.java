@@ -1,11 +1,18 @@
 package Collection;
 
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.KeywordAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Esteban on 15/11/2016.
@@ -46,11 +53,21 @@ public class IncomingReutersFile {
     return articles;
   }
   
+  /**
+   * Realiza el parsing del archivo ingresado.
+   * @param file
+   * @throws Exception
+   */
   private void parseFile(File file) throws Exception {
     Document fileData = DocumentParsing.buildDocument(file);
     extractArticles(fileData);
   }
   
+  /**
+   * Extrae los artículos del archivo.
+   * @param document
+   * @throws Exception
+   */
   private void extractArticles(Document document) throws Exception {
     articles = new ArrayList<>();
   
@@ -60,6 +77,22 @@ public class IncomingReutersFile {
       Element articleNode = (Element) reutersNodes.item(i);
       articles.add(new Article(articleNode));
     }
+  }
+  
+  
+  /**
+   * Obtener los analizadores a utilizar para cada campo del archivo que será indizado.
+   * Se usa WhiteSpaceAnalyzer como analizador por defecto.
+   */
+  public static PerFieldAnalyzerWrapper getFieldsAnalyzers(){
+    Map<String, Analyzer> specializedAnalyzers = new HashMap<>();
+    specializedAnalyzers.put("file_name", new KeywordAnalyzer());
+    specializedAnalyzers.put("file_path", new KeywordAnalyzer());
+    specializedAnalyzers.put("body", new StandardAnalyzer());
+    specializedAnalyzers.put("title", new StandardAnalyzer());
+    
+    return new PerFieldAnalyzerWrapper(new WhitespaceAnalyzer(), specializedAnalyzers);
+    
   }
   
   @Override

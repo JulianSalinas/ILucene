@@ -18,10 +18,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 /**
  * Clase para hacer búsqueda interna dentro de un nodo.
  */
-public class DocumentParsing {
+class DocumentParsing {
   private DocumentParsing(){}
   
-  public static Document buildDocument(File file) throws Exception {
+  static Document buildDocument(File file) throws Exception {
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
     Document document = dBuilder.parse(file);
@@ -29,14 +29,13 @@ public class DocumentParsing {
     return document;
   }
   
-  
-  public static String findSingleField(Element nodeElement, String attr) {
+  static String findSingleField(Element nodeElement, String attr) {
     NodeList elements = nodeElement.getElementsByTagName(attr);
     if (elements.getLength() > 0) return elements.item(0).getTextContent();
     else return "";
   }
   
-  public static ArrayList<String> findMultipleFields(Element element, String attr) {
+  static ArrayList<String> findMultipleFields(Element element, String attr) {
     ArrayList<String> fields = new ArrayList<>();
     
     NodeList nodeList = element.getElementsByTagName(attr);

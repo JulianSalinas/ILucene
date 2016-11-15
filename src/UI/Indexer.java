@@ -113,9 +113,6 @@ public class Indexer extends JPanel {
         ((DefaultListModel<File>) files.getModel()).remove(i);
   }
   
-  /**
-   * Este no es fijo es solo para prober, aqui iria el metodos para indexar los archivos
-   */
   private void indexSelectedFiles() {
     try {
       Window.Instance().showMessage("Procesando archivos...");

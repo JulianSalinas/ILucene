@@ -25,18 +25,6 @@ public class Article {
   private ArrayList<String> orgs;
   private ArrayList<String> exchanges;
   
-  Article(Element element, Element text) {
-    id = element.getAttribute("NEWID");
-    body = findSingleField(text, "BODY");
-    title = findSingleField(text, "TITLE");
-    author = findSingleField(text, "AUTHOR");
-    date = findSingleField(element, "DATE");
-    topics = findMultipleFields(element, "TOPICS");
-    places = findMultipleFields(element, "PLACES");
-    orgs = findMultipleFields(element, "ORGS");
-    exchanges = findMultipleFields(element, "EXCHANGES");
-  }
-  
   public Article(){
     id = "";
     body = "";
@@ -51,11 +39,11 @@ public class Article {
   
   Article(Element articleNode){
     id = articleNode.getAttribute("NEWID");
-    date = DocumentParsing.findSingleField(articleNode, "DATE");
-    topics = DocumentParsing.findMultipleFields(articleNode, "TOPICS");
-    places = DocumentParsing.findMultipleFields(articleNode, "PLACES");
-    orgs = DocumentParsing.findMultipleFields(articleNode, "ORGS");
-    exchanges = DocumentParsing.findMultipleFields(articleNode, "EXCHANGES");
+    date = findSingleField(articleNode, "DATE");
+    topics = findMultipleFields(articleNode, "TOPICS");
+    places = findMultipleFields(articleNode, "PLACES");
+    orgs = findMultipleFields(articleNode, "ORGS");
+    exchanges = findMultipleFields(articleNode, "EXCHANGES");
     
     NodeList articleTextNodes = articleNode.getElementsByTagName("TEXT");
     
@@ -63,9 +51,9 @@ public class Article {
       // Datos extraídos de los sub-nodos TEXT de los artículos.
       Element articleTextNode = (Element) articleNode.getElementsByTagName("TEXT").item(0);
   
-      body = DocumentParsing.findSingleField(articleTextNode, "BODY");
-      title = DocumentParsing.findSingleField(articleTextNode, "TITLE");
-      author = DocumentParsing.findSingleField(articleTextNode, "AUTHOR");
+      body = findSingleField(articleTextNode, "BODY");
+      title = findSingleField(articleTextNode, "TITLE");
+      author = findSingleField(articleTextNode, "AUTHOR");
     }
     
     // Contingencia para evitar posible Exception.

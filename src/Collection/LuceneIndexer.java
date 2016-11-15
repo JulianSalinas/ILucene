@@ -19,8 +19,9 @@ public class LuceneIndexer {
   
   private final String testFile = "test.lucene";
   private String indexFilePath;   // Ruta del archivo de índice.
+  
   // Para utilizar analizadores para diferentes campos.
-  private PerFieldAnalyzerWrapper analyzerWrapper;
+  private static PerFieldAnalyzerWrapper analyzerWrapper;
   
   
   // --- //
@@ -61,7 +62,7 @@ public class LuceneIndexer {
    * Abre el archivo de índice en modo escritura para agregar documentos o modificar el índice.
    * Si el archivo no existe, es creado.
    */
-  private IndexWriter getIndexWriter() throws Exception {
+  private IndexWriter openIndexWriter() throws Exception {
     if (!indexFilePath.isEmpty()) {
       try {
         Directory indexFile = SimpleFSDirectory.open(Paths.get(indexFilePath));
@@ -76,11 +77,11 @@ public class LuceneIndexer {
     }
     throw new Exception("File path not specified.");
   }
-  
+    
   /**
    * Abre el archivo de índice en modo lectura para realizar búsquedas.
    */
-  private IndexReader getIndexReader() throws Exception {
+  private IndexReader openIndexReader() throws Exception {
     if (!indexFilePath.isEmpty()) {
       try {
         Directory indexFile = SimpleFSDirectory.open(Paths.get(indexFilePath));
@@ -90,11 +91,6 @@ public class LuceneIndexer {
       }
     }
     throw new Exception("File path not specified.");
-  }
-  
-  
-  private void setFieldAnalyzers() {
-    
   }
   
 }
