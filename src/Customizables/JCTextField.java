@@ -28,7 +28,7 @@ public class JCTextField extends JTextField{
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                band = (getText().length()>0) ? false:true ;
+                band = getText().length() <= 0;
             }
 
             @Override

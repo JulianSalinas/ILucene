@@ -3,11 +3,12 @@ package Collection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Usar solamente el metodo estatico findFromFiles(String path)
@@ -57,7 +58,7 @@ public class Article {
     }
 
     private static ArrayList<Article> findFromDocument(Document document) throws Exception{
-        ArrayList articles = new ArrayList();
+        ArrayList<Article> articles = new ArrayList<>();
         NodeList reuters = document.getElementsByTagName("REUTERS");
         for (int i = 0; i < reuters.getLength(); i++) {
             Element element = (Element) reuters.item(i);
@@ -107,8 +108,7 @@ public class Article {
     }
 
     public static void printAll(ArrayList<Article>articles){
-        for(Article article : articles)
-            System.out.println(article);
+        articles.forEach(System.out::println);
     }
 
     @Override
