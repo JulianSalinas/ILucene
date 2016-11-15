@@ -68,7 +68,6 @@ public class Browser extends JPanel {
     calendarProperties.put("text.year", "Año");
     
     
-    
     modelbegin.setDate(1997, 2, 1);
     JDatePanelImpl datePanel1 = new JDatePanelImpl(modelbegin, calendarProperties);
     datePanel1.setOpaque(true);
@@ -139,7 +138,7 @@ public class Browser extends JPanel {
     
     body = new JCTextField("Body");
     title = new JCTextField("Title");
-    author = new JCTextField("Authon");
+    author = new JCTextField("Author");
     topics = new JCTextField("Topics");
     places = new JCTextField("Places");
     orgs = new JCTextField("Orgs");
