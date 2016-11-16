@@ -1,3 +1,5 @@
 # ILucene
 * Proyecto II : Information Retrieval
-* IDE(s) : Netbeans e IntelliJ IDEA en Wangblows
+
+# Notas: 
+* Para ejecutar las consultas primero debe cargar un directory lucene en las pestaña de indizar. 
