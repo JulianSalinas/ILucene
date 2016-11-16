@@ -9,11 +9,19 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.SimpleFSDirectory;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -102,6 +110,7 @@ public class LuceneIndexer {
    * @param reutersFile
    * @throws Exception
    */
+  // TODO Probar algoritmo.
   public void addFileToIndex(IncomingReutersFile reutersFile) throws Exception {
     // Abre el archivo de Lucene para agregar nuevos documentos.
     IndexWriter indexWriter = openIndexWriter();
@@ -151,11 +160,103 @@ public class LuceneIndexer {
     System.out.println("Document " + reutersFile.getFileName() + " has been indexed.");
   }
   
-
   
-  // TODO Implementar búsqueda.
-  public void doSearch(java.util.Dictionary<String, String> userQueries) throws Exception {
+  // TODO Probar algoritmo.
+  public ArrayList<Document> doSearch(java.util.Dictionary<String, String> userQuery)
+      throws Exception {
+    try {
+      // Abre el archivo de índice de Lucene en modo lectura y genera el buscador.
+      IndexSearcher searcher = new IndexSearcher(openIndexReader());
+      
+      BooleanQuery parsedQuery = prepareSearchQuery(userQuery);
+  
+      // Se muestran los 100 mejores resultados:
+      TopDocs searchResults = searcher.search(parsedQuery, 100);
+  
+      // Los resultados se almacenan en un array de hits.
+      ScoreDoc[] hits = searchResults.scoreDocs;
+  
+      // ArrayList que contendrá los documentos encontrados.
+      ArrayList<Document> resultDocuments = new ArrayList<>();
+      
+      // Obtener documentos de array de hits.
+      for (int hitIndex = 0; hitIndex < hits.length; hitIndex++){
+        Document document = searcher.doc(hits[hitIndex].doc);
+        resultDocuments.add(document);
+      }
+      
+      return resultDocuments;
+      
+    }
+    catch (Exception e){
+      throw e;
+    }
+  }
+  
+  /**
+   * Parsea la búsqueda del usuario para generar una consulta de Lucene.
+   * @param userQueries Diccionario con la búsqueda ingresada por el usuario.
+   * @throws Exception
+   */
+  private BooleanQuery prepareSearchQuery(java.util.Dictionary<String, String> userQueries)
+      throws Exception {
+  
+    // Constructor de consulta para múltiples campos.
+    BooleanQuery.Builder queryBuilder = new BooleanQuery.Builder();
     
+    if (userQueries.get("title") != null){
+      QueryParser qpTitle = new QueryParser("title", IncomingReutersFile.getFieldsAnalyzers());
+      Query qTitle = qpTitle.parse(userQueries.get("title"));
+      queryBuilder.add(qTitle, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("body") != null){
+      QueryParser qpBody = new QueryParser("body", IncomingReutersFile.getFieldsAnalyzers());
+      Query qBody = qpBody.parse(userQueries.get("body"));
+      queryBuilder.add(qBody, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("author") != null){
+      QueryParser qpAuthor = new QueryParser("author", IncomingReutersFile.getFieldsAnalyzers());
+      Query qAuthor = qpAuthor.parse(userQueries.get("author"));
+      queryBuilder.add(qAuthor, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("topics") != null){
+      QueryParser qpTopics = new QueryParser("topics", IncomingReutersFile.getFieldsAnalyzers());
+      Query qTopics = qpTopics.parse(userQueries.get("topics"));
+      queryBuilder.add(qTopics, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("places") != null){
+      QueryParser qpPlaces = new QueryParser("places", IncomingReutersFile.getFieldsAnalyzers());
+      Query qPlaces = qpPlaces.parse(userQueries.get("places"));
+      queryBuilder.add(qPlaces, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("people") != null){
+      QueryParser qpPeople = new QueryParser("people", IncomingReutersFile.getFieldsAnalyzers());
+      Query qPeople = qpPeople.parse(userQueries.get("people"));
+      queryBuilder.add(qPeople, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("orgs") != null){
+      QueryParser qpOrgs = new QueryParser("orgs", IncomingReutersFile.getFieldsAnalyzers());
+      Query qOrgs = qpOrgs.parse(userQueries.get("orgs"));
+      queryBuilder.add(qOrgs, BooleanClause.Occur.MUST);
+    }
+    if (userQueries.get("exchanges") != null){
+      QueryParser qpExchanges = new QueryParser
+          ("exchanges", IncomingReutersFile.getFieldsAnalyzers());
+      Query qExchanges = qpExchanges.parse(userQueries.get("exchanges"));
+      queryBuilder.add(qExchanges, BooleanClause.Occur.MUST);
+    }
+    
+    // TODO Incluir consulta en rango de fechas.
+    if (userQueries.get("start_date") != null){
+      if (userQueries.get("end_date") != null){
+        // Hay fecha de inicio y fin.
+      }
+      else {
+        // Sólo hay fecha de inicio.
+      }
+    }
+    
+    return queryBuilder.build();
   }
   
 }
