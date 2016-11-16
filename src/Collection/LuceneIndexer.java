@@ -154,7 +154,7 @@ public class LuceneIndexer {
 
   
   // TODO Implementar búsqueda.
-  public void search(java.util.Dictionary<String, String> userQueries) throws Exception {
+  public void doSearch(java.util.Dictionary<String, String> userQueries) throws Exception {
     
   }
   
