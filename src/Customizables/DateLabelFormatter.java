@@ -1,4 +1,4 @@
-package UI;
+package Customizables;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,9 +9,9 @@ import javax.swing.*;
 /**
  * Created by Esteban on 14/11/2016.
  */
-public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter{
   
-  private String datePattern = "yyyy-MM-dd";
+  private String datePattern = "dd/MM/yyyy";
   private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
   
   @Override
@@ -21,7 +21,7 @@ public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
   
   @Override
   public String valueToString(Object value) throws ParseException {
-    if (value != null) {
+    if (value != null){
       Calendar calendar = (Calendar) value;
       return dateFormatter.format(calendar.getTime());
     }
