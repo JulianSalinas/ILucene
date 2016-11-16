@@ -9,12 +9,14 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Collection.IncomingReutersFile;
+import Collection.LuceneIndexer;
 
 
 public class Indexer extends JPanel {
   
   private JFileChooser fileChooser;
   private JLabel labelAddFiles;
+  
   private JList<File> files;
   private JButton buttonAddFile;
   private JButton buttonRemoveFile;
@@ -117,25 +119,30 @@ public class Indexer extends JPanel {
     try {
       Window.Instance().showMessage("Procesando archivos...");
       System.out.println("FileModel: " + files.getModel().toString());
-      
+  
       DefaultListModel<File> model = (DefaultListModel<File>) files.getModel();
-      
+  
       ArrayList<IncomingReutersFile> parsedFiles = new ArrayList<>();
-      
-      
+  
+  
       for (int i = 0; i < model.getSize(); i++) {
         File selectedFile = model.elementAt(i);
-        
+    
         // Parsing de archivos seleccionados a clase IncomingReutersFile.
         // Clase IncomingReutersFile será utilizada para generación de índices en Lucene.
-        
+    
         IncomingReutersFile parsedFile = new IncomingReutersFile(selectedFile);
         parsedFiles.add(parsedFile);
+    
+        //TODO Crear archivo de índice de Lucene e indizar archivos.
+        LuceneIndexer indexFile = new LuceneIndexer("file-path");
+        //
         
-        //TODO Indizar IncomingReutersFile
         
+    
       }
-  
+    
+      // Imprime info básica del archivo procesado.
       for (IncomingReutersFile parsedFile: parsedFiles) {
         System.out.println(parsedFile.toString());
       }
@@ -150,9 +157,9 @@ public class Indexer extends JPanel {
       File file = files.getSelectedValue();
       Desktop.getDesktop().open(file);
     } catch (NullPointerException e) {
-      Window.Instance().showMessage("No hay ningun archio seleccionado");
+      Window.Instance().showMessage("No hay ningún archivo seleccionado.");
     } catch (Exception e) {
-      Window.Instance().showMessage("No se ha podido abrir el archivo");
+      Window.Instance().showMessage("No se ha podido abrir el archivo.");
     }
   }
   

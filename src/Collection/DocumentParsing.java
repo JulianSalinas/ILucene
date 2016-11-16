@@ -5,7 +5,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -45,6 +48,17 @@ class DocumentParsing {
     }
     // Si no existen subnodos, se retorna una lista vacía.
     return new ArrayList<>();
+  }
+  
+  // Convierte fecha con formato dd-MMM-aaaa HH:mm:ss.S a long.
+  static Date parseDateString(String dateString) throws Exception {
+    try {
+      SimpleDateFormat sf = new SimpleDateFormat("dd-MMM-aaaa HH:mm:ss.S");
+      return sf.parse(dateString);
+      
+    } catch (ParseException e){
+      throw new Exception("Date cannot be parsed from String to long.");
+    }
   }
   
   private static ArrayList<String> findFieldNodes(NodeList nodeList) {

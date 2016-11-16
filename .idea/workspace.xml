@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a36f3403-3418-4cf0-8463-d9817616ce36" name="Default" comment="Implementando analizadores especializados.">
+    <list default="true" id="a36f3403-3418-4cf0-8463-d9817616ce36" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application/Main.java" afterPath="$PROJECT_DIR$/src/Application/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Collection/Article.java" afterPath="$PROJECT_DIR$/src/Collection/Article.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Collection/DocumentParsing.java" afterPath="$PROJECT_DIR$/src/Collection/DocumentParsing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Collection/IncomingReutersFile.java" afterPath="$PROJECT_DIR$/src/Collection/IncomingReutersFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Collection/LuceneIndexer.java" afterPath="$PROJECT_DIR$/src/Collection/LuceneIndexer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/Indexer.java" afterPath="$PROJECT_DIR$/src/UI/Indexer.java" />
     </list>
@@ -35,8 +35,8 @@
       <file leaf-file-name="Indexer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Indexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="114" column="2" selection-start-line="114" selection-start-column="2" selection-end-line="114" selection-end-column="2" />
+            <state relative-caret-position="202">
+              <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Indexer#0;class#Indexer#0" expanded="false" />
@@ -46,33 +46,49 @@
                 <element signature="method#setButtons#0;class#Indexer#0" expanded="false" />
                 <element signature="method#setFunctions#0;class#Indexer#0" expanded="false" />
                 <element signature="method#setFileChooser#0;class#Indexer#0" expanded="false" />
+                <element signature="method#addSelectedFiles#0;class#Indexer#0" expanded="false" />
                 <element signature="method#removeSelectedFiles#0;class#Indexer#0" expanded="false" />
+                <element signature="method#openSelectedFile#0;class#Indexer#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LuceneIndexer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LuceneIndexer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Collection/LuceneIndexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+            <state relative-caret-position="216">
+              <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#LuceneIndexer#0;class#LuceneIndexer#0" expanded="false" />
                 <element signature="method#existsIndex#0;class#LuceneIndexer#0" expanded="false" />
                 <element signature="method#openIndexWriter#0;class#LuceneIndexer#0" expanded="false" />
                 <element signature="method#openIndexReader#0;class#LuceneIndexer#0" expanded="false" />
+                <element signature="docComment;method#addFileToIndex#0;class#LuceneIndexer#0" expanded="false" />
+                <element signature="method#addFileToIndex#0;class#LuceneIndexer#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IncomingReutersFile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IncomingReutersFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Collection/IncomingReutersFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+            <state relative-caret-position="435">
+              <caret line="51" column="39" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#parseFile#0;class#IncomingReutersFile#0" expanded="false" />
@@ -139,7 +155,6 @@
         <option value="$PROJECT_DIR$/src/Collection/ReuterDocument.java" />
         <option value="$PROJECT_DIR$/src/UI/Window.form" />
         <option value="$PROJECT_DIR$/src/UI/Chooser.java" />
-        <option value="$PROJECT_DIR$/src/Application/Main.java" />
         <option value="$PROJECT_DIR$/src/UI/prueba.form" />
         <option value="$PROJECT_DIR$/src/UI/Datepicker.java" />
         <option value="$PROJECT_DIR$/src/UI/JCTextField.java" />
@@ -152,12 +167,13 @@
         <option value="$PROJECT_DIR$/src/Collection/XmlNodeCrawler.java" />
         <option value="$PROJECT_DIR$/src/Collection/NodeCrawler.java" />
         <option value="$PROJECT_DIR$/src/UI/DateLabelFormatter.java" />
-        <option value="$PROJECT_DIR$/src/UI/Indexer.java" />
-        <option value="$PROJECT_DIR$/src/Collection/LuceneIndexer.java" />
         <option value="$PROJECT_DIR$/src/Collection/ReutersFilesAnalyzers.java" />
+        <option value="$PROJECT_DIR$/src/Collection/IncomingReutersFile.java" />
         <option value="$PROJECT_DIR$/src/Collection/Article.java" />
         <option value="$PROJECT_DIR$/src/Collection/DocumentParsing.java" />
-        <option value="$PROJECT_DIR$/src/Collection/IncomingReutersFile.java" />
+        <option value="$PROJECT_DIR$/src/Application/Main.java" />
+        <option value="$PROJECT_DIR$/src/UI/Indexer.java" />
+        <option value="$PROJECT_DIR$/src/Collection/LuceneIndexer.java" />
       </list>
     </option>
   </component>
@@ -179,7 +195,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1489" />
+    <option name="width" value="1255" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -275,10 +291,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Customizables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -311,18 +323,8 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ILucene" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ILucene" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="Application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -805,7 +807,7 @@
       <workItem from="1479236375960" duration="28000" />
       <workItem from="1479237121238" duration="8595000" />
       <workItem from="1479245967608" duration="765000" />
-      <workItem from="1479246801042" duration="3663000" />
+      <workItem from="1479246801042" duration="11936000" />
     </task>
     <task id="LOCAL-00001" summary="Comenzando implementación Lucene.">
       <created>1479184514542</created>
@@ -814,30 +816,38 @@
       <option name="project" value="LOCAL" />
       <updated>1479184514542</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implementando analizadores especializados.">
+      <created>1479250801925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1479250801925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23344000" />
+    <option name="totallyTimeSpent" value="31617000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1489" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1255" height="1047" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19474836" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17774668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20585774" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24970484" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -851,7 +861,6 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998818" sideWeight="0.4889807" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5110193" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -885,6 +894,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -892,6 +902,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +914,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#Article#0;class#Article#0" expanded="false" />
             <element signature="method#Article#1;class#Article#0" expanded="false" />
-            <element signature="method#toString#0;class#Article#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -921,7 +931,9 @@
             <element signature="method#setButtons#0;class#Indexer#0" expanded="false" />
             <element signature="method#setFunctions#0;class#Indexer#0" expanded="false" />
             <element signature="method#setFileChooser#0;class#Indexer#0" expanded="false" />
+            <element signature="method#addSelectedFiles#0;class#Indexer#0" expanded="false" />
             <element signature="method#removeSelectedFiles#0;class#Indexer#0" expanded="false" />
+            <element signature="method#openSelectedFile#0;class#Indexer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -951,7 +963,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#Article#0;class#Article#0" expanded="false" />
             <element signature="method#Article#1;class#Article#0" expanded="false" />
-            <element signature="method#toString#0;class#Article#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1014,29 +1025,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Customizables/Poly.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Customizables/JCTextField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Chooser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
           <caret line="48" column="2" selection-start-line="48" selection-start-column="2" selection-end-line="48" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1044,6 +1037,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collection/XmlParsing.java" />
+    <entry file="file://$PROJECT_DIR$/src/UI/DateLabelFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collection/ReutersFilesAnalyzers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Customizables/Poly.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Customizables/JCTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <folding>
+            <element signature="e#788#789#0" expanded="false" />
+            <element signature="e#836#837#0" expanded="false" />
+            <element signature="method#paintComponent#0;class#JCTextField#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collection/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="174" column="42" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Article#0;class#Article#0" expanded="false" />
+            <element signature="method#Article#1;class#Article#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collection/DocumentParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#buildDocument#0;class#DocumentParsing#0" expanded="false" />
+            <element signature="method#findSingleField#0;class#DocumentParsing#0" expanded="false" />
+            <element signature="method#findMultipleFields#0;class#DocumentParsing#0" expanded="false" />
+            <element signature="method#findFieldNodes#0;class#DocumentParsing#0" expanded="false" />
+            <element signature="method#addFieldNodes#0;class#DocumentParsing#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,26 +1114,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Collection/XmlParsing.java" />
-    <entry file="file://$PROJECT_DIR$/src/UI/DateLabelFormatter.java">
+    <entry file="file://$PROJECT_DIR$/src/Collection/IncomingReutersFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state relative-caret-position="435">
+          <caret line="51" column="39" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#parseFile#0;class#IncomingReutersFile#0" expanded="false" />
+            <element signature="method#parseFile#0;class#IncomingReutersFile#0" expanded="false" />
+            <element signature="docComment;method#extractArticles#0;class#IncomingReutersFile#0" expanded="false" />
+            <element signature="method#extractArticles#0;class#IncomingReutersFile#0" expanded="false" />
+            <element signature="method#toString#0;class#IncomingReutersFile#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Collection/ReutersFilesAnalyzers.java">
+    <entry file="file://$PROJECT_DIR$/src/Application/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Indexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="114" column="2" selection-start-line="114" selection-start-column="2" selection-end-line="114" selection-end-column="2" />
+        <state relative-caret-position="202">
+          <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Indexer#0;class#Indexer#0" expanded="false" />
@@ -1086,64 +1152,25 @@
             <element signature="method#setButtons#0;class#Indexer#0" expanded="false" />
             <element signature="method#setFunctions#0;class#Indexer#0" expanded="false" />
             <element signature="method#setFileChooser#0;class#Indexer#0" expanded="false" />
+            <element signature="method#addSelectedFiles#0;class#Indexer#0" expanded="false" />
             <element signature="method#removeSelectedFiles#0;class#Indexer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Collection/DocumentParsing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#buildDocument#0;class#DocumentParsing#0" expanded="false" />
-            <element signature="method#findSingleField#0;class#DocumentParsing#0" expanded="false" />
-            <element signature="method#findMultipleFields#0;class#DocumentParsing#0" expanded="false" />
-            <element signature="method#findFieldNodes#0;class#DocumentParsing#0" expanded="false" />
-            <element signature="method#addFieldNodes#0;class#DocumentParsing#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Collection/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Article#0;class#Article#0" expanded="false" />
-            <element signature="method#Article#1;class#Article#0" expanded="false" />
-            <element signature="method#toString#0;class#Article#0" expanded="false" />
+            <element signature="method#openSelectedFile#0;class#Indexer#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Collection/LuceneIndexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+        <state relative-caret-position="216">
+          <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#LuceneIndexer#0;class#LuceneIndexer#0" expanded="false" />
             <element signature="method#existsIndex#0;class#LuceneIndexer#0" expanded="false" />
             <element signature="method#openIndexWriter#0;class#LuceneIndexer#0" expanded="false" />
             <element signature="method#openIndexReader#0;class#LuceneIndexer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Collection/IncomingReutersFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#parseFile#0;class#IncomingReutersFile#0" expanded="false" />
-            <element signature="method#parseFile#0;class#IncomingReutersFile#0" expanded="false" />
-            <element signature="docComment;method#extractArticles#0;class#IncomingReutersFile#0" expanded="false" />
-            <element signature="method#extractArticles#0;class#IncomingReutersFile#0" expanded="false" />
-            <element signature="method#toString#0;class#IncomingReutersFile#0" expanded="false" />
+            <element signature="docComment;method#addFileToIndex#0;class#LuceneIndexer#0" expanded="false" />
+            <element signature="method#addFileToIndex#0;class#LuceneIndexer#0" expanded="false" />
           </folding>
         </state>
       </provider>

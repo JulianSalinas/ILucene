@@ -22,6 +22,7 @@ public class Article {
   private String date;
   private ArrayList<String> topics;
   private ArrayList<String> places;
+  private ArrayList<String> people;
   private ArrayList<String> orgs;
   private ArrayList<String> exchanges;
   
@@ -33,6 +34,7 @@ public class Article {
     date = "";
     topics = null;
     places = null;
+    people = null;
     orgs = null;
     exchanges = null;
   }
@@ -42,6 +44,7 @@ public class Article {
     date = findSingleField(articleNode, "DATE");
     topics = findMultipleFields(articleNode, "TOPICS");
     places = findMultipleFields(articleNode, "PLACES");
+    people = findMultipleFields(articleNode, "PEOPLE");
     orgs = findMultipleFields(articleNode, "ORGS");
     exchanges = findMultipleFields(articleNode, "EXCHANGES");
     
@@ -94,6 +97,10 @@ public class Article {
     return places;
   }
   
+  public ArrayList<String> getPeople() {
+    return people;
+  }
+  
   public ArrayList<String> getOrgs() {
     return orgs;
   }
@@ -136,12 +143,24 @@ public class Article {
       }
       stringBuilder.append("\n");
     }
+  
+    Iterator<String> peopleIter = people.iterator();
+    if (peopleIter.hasNext()){
+      stringBuilder.append("Places: ");
+      while (peopleIter.hasNext()){
+        stringBuilder.append(peopleIter.next());
+        if (peopleIter.hasNext()){
+          stringBuilder.append(", ");
+        }
+      }
+      stringBuilder.append("\n");
+    }
     
     Iterator<String> orgsIter = orgs.iterator();
     if (orgsIter.hasNext()){
       stringBuilder.append("Orgs: ");
       while (orgsIter.hasNext()){
-        stringBuilder.append(placesIter.next());
+        stringBuilder.append(orgsIter.next());
         if (orgsIter.hasNext()){
           stringBuilder.append(", ");
         }
@@ -153,7 +172,7 @@ public class Article {
     if (exchangesIter.hasNext()){
       stringBuilder.append("Exchanges: ");
       while (exchangesIter.hasNext()){
-        stringBuilder.append(placesIter.next());
+        stringBuilder.append(exchangesIter.next());
         if (exchangesIter.hasNext()){
           stringBuilder.append(", ");
         }
