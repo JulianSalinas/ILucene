@@ -1,13 +1,15 @@
-package UI;
+package View.Other;
+
+import View.UIWindow;
 
 import javax.swing.*;
 
-public class UIChooser extends JPanel{
+public class CustomTab extends JPanel{
 
     private JToggleButton btnIndexer;
     private JToggleButton btnBrowser;
 
-    public UIChooser(){
+    public CustomTab(){
         setProperties();
         setButtons();
         setFunctions();

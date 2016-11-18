@@ -147,9 +147,9 @@ public class Article {
 
         String str =
                 "ID: " + id + "\n" +
-                "Title: " + title + "\n" +
-                "Author: " + author + "\n" +
-                "Date: " + String.valueOf(date) + "\n";
+                        "Title: " + title + "\n" +
+                        "Author: " + author + "\n" +
+                        "Date: " + String.valueOf(date) + "\n";
 
         String substr = "";
         for(String element : topics) substr += element + ", ";

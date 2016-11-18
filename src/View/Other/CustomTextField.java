@@ -1,7 +1,6 @@
-package Customizables;
+package View.Other;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Insets;
 import javax.swing.JTextField;
@@ -9,13 +8,13 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 
-public class JCTextField extends JTextField{
+public class CustomTextField extends JTextField{
 
     private String placeholder = "";
     private Color phColor= new Color(72,117,210);
     private boolean band = true;
 
-    public JCTextField(String placeholder)
+    public CustomTextField(String placeholder)
     {
         super();
         this.placeholder = placeholder;

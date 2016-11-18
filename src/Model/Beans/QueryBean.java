@@ -1,6 +1,6 @@
-package Model;
+package Model.Beans;
 
-public class QueryInfo {
+public class QueryBean {
 
     private String[] fields;
     private String content;
@@ -16,5 +16,10 @@ public class QueryInfo {
     public String getContent() {return content;}
     public String getPath() {return path;}
     public String getType() {return type;}
+
+    @Override
+    public String toString(){
+        return content;
+    }
 
 }
