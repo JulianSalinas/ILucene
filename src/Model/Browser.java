@@ -8,7 +8,6 @@ import Model.Beans.QueryBean;
 import Model.Beans.ResultBean;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
-import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -22,24 +21,16 @@ public class Browser {
 
     public Browser(Index index) throws Exception {
         this.index = index;
-        this.reader = createIndexReader();
-        this.searcher = new IndexSearcher(reader);
     }
-
     private IndexReader createIndexReader() throws Exception{
         Path path = Paths.get(index.getPath());
         Directory dir = FSDirectory.open(path);
         return DirectoryReader.open(dir);
     }
 
-    private Query createQuery(QueryBean info) throws Exception {
-        MultiFieldQueryParser parser = new MultiFieldQueryParser(info.getFields(), index.getAnalizer());
-        if(info.getType().equals("AND")) parser.setDefaultOperator(QueryParser.Operator.AND);
-        else parser.setDefaultOperator(QueryParser.Operator.OR);
-        return parser.parse(info.getContent());
-    }
-
     public ArrayList<ResultBean> doSearch(QueryBean info) throws Exception{
+        reader = createIndexReader();
+        searcher = new IndexSearcher(reader);
         Query query = createQuery(info);
         ScoreDoc[] hits = searcher.search(query, 100).scoreDocs;
         ArrayList<ResultBean> results = new ArrayList<>();
@@ -51,7 +42,12 @@ public class Browser {
             result.setTitle(document.getValues("title")[0]);
             results.add(result);
         }
+        reader.close();
         return results;
+    }
+    private Query createQuery(QueryBean info) throws Exception {
+        QueryParser parser = new QueryParser(info.getContent(), index.getAnalizer());
+        return parser.parse(info.getContent());
     }
 
 }

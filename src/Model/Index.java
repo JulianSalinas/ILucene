@@ -26,24 +26,23 @@ public class Index {
     private IndexWriter writer;
     private PerFieldAnalyzerWrapper analyzer;
 
-    public Analyzer getAnalizer() { return analyzer; }
-    public String getPath () { return registry.getPath(); }
-
     public Index(Registry registry) throws Exception {
         this.registry = registry;
         this.analyzer = createPerFieldAnalyzer();
-        //this.writer = createIndexWriter();
     }
+
+    public Analyzer getAnalizer() { return analyzer; }
+    public String getPath () { return registry.getPath(); }
 
     public PerFieldAnalyzerWrapper createPerFieldAnalyzer(){
         Map<String, Analyzer> map = new HashMap<>();
         map.put("id", new KeywordAnalyzer());
         map.put("path", new KeywordAnalyzer());
+        map.put("date", new KeywordAnalyzer());
         map.put("body", new StandardAnalyzer());
         map.put("title", new StandardAnalyzer());
         return new PerFieldAnalyzerWrapper(new WhitespaceAnalyzer(), map);
     }
-
     private IndexWriter createIndexWriter() throws Exception{
         Path path = Paths.get(registry.getPath());
         Directory dir = FSDirectory.open(path);
@@ -54,16 +53,16 @@ public class Index {
 
     public void indexFiles(ArrayList<File> files) throws Exception{
         writer = createIndexWriter();
-        for(File file : files ) {
-            if(!registry.has(file)) {
-                writer.addDocuments(createDocuments(file));
-                registry.add(file);
-            }
-        }
+        for(File file : files ) verifyAndAddFile(file);
         registry.save();
         writer.close();
     }
-
+    private void verifyAndAddFile(File file) throws Exception{
+        if(!registry.has(file)) {
+            writer.addDocuments(createDocuments(file));
+            registry.add(file);
+        }
+    }
     private ArrayList<Document> createDocuments(File file) throws Exception {
         ArrayList<Article> articles = Article.findFromFile(file);
         ArrayList<Document> documents = new ArrayList<>();
@@ -71,7 +70,6 @@ public class Index {
             documents.add(createDocument(article));
         return documents;
     }
-
     private Document createDocument(Article article) {
         Document document = new Document();
         document.add(new StringField("path", article.getPath(), Field.Store.YES));

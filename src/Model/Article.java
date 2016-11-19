@@ -41,7 +41,7 @@ public class Article {
     public ArrayList<String>getOrgs(){ return orgs; }
     public ArrayList<String>getExchanges(){ return exchanges; }
 
-    private Article (Element element, Element text, String path){
+    private Article (Element element, Element text, String path) throws Exception{
         this.path = path;
         id = element.getAttribute("NEWID");
         body = findSingleField(text, "BODY");
@@ -52,15 +52,7 @@ public class Article {
         places = findMultipleFields(element,"PLACES");
         orgs = findMultipleFields(element,"ORGS");
         exchanges = findMultipleFields(element,"EXCHANGES");
-        //System.out.println(this);
     }
-
-    public static ArrayList<Article> findFromFiles(ArrayList<File> files) throws Exception{
-        ArrayList<Article>articles = new ArrayList<>();
-        for(File file : files) articles.addAll(findFromFile(file));
-        return articles;
-    }
-
     public static ArrayList<Article> findFromFile(File file) throws Exception{
         Document document = buildDocument(file);
         ArrayList<Article> articles = new ArrayList<>();
@@ -73,7 +65,6 @@ public class Article {
         }
         return articles;
     }
-
     private static Document buildDocument(File file) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -81,7 +72,6 @@ public class Article {
         document.getDocumentElement().normalize();
         return document;
     }
-
     private ArrayList<String> findMultipleFields(Element element, String attr){
         ArrayList<String> fields = new ArrayList<>();
         NodeList nodeList = element.getElementsByTagName(attr);
@@ -89,13 +79,11 @@ public class Article {
         else fields = findFieldNodes(nodeList);
         return fields;
     }
-
     private String findSingleField(Element element, String attr){
         NodeList elements = element.getElementsByTagName(attr);
         if(elements.getLength() > 0) return elements.item(0).getTextContent();
         else return "NOT EXISTS";
     }
-
     private ArrayList<String> findFieldNodes(NodeList nodeList){
         ArrayList<String> fields = new ArrayList<>();
         Element mainNode = (Element) nodeList.item(0);
@@ -104,7 +92,6 @@ public class Article {
         else fields = addFieldNodes(subNodeList);
         return fields;
     }
-
     private ArrayList<String> addFieldNodes(NodeList subNodeList){
         ArrayList<String> fields = new ArrayList<>();
         for (int i = 0; i < subNodeList.getLength(); i++)
@@ -113,20 +100,16 @@ public class Article {
     }
 
     private static Pattern pattern = Pattern.compile("([0-9]+)-([A-Z][A-Z][A-Z])-([0-9]+)");
-    private static String traslateDate (String date) {
-        try {
-            Matcher matcher = pattern.matcher(date);
-            if (matcher.find()) {
-                String day = traslateDay(matcher.group(1));
-                String month = traslateMonth(matcher.group(2));
-                String year = matcher.group(3);
-                date = year + month + day;
-                return date;
-            } return "19970101";
-        } catch (Exception e) { return "19970101";}
+    private static String traslateDate (String date) throws Exception{
+        Matcher matcher = pattern.matcher(date);
+        if (matcher.find()) {
+            String day = traslateDay(matcher.group(1));
+            String month = traslateMonth(matcher.group(2));
+            String year = matcher.group(3);
+            date = year + month + day;
+            return date;
+        } return "19970101";
     }
-
-    //Ej: "FEB" = "02"
     private static String traslateMonth(String month) throws Exception {
         Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(month);
         Calendar cal = Calendar.getInstance();
@@ -135,46 +118,9 @@ public class Article {
         if(traslated.length() == 1) traslated = "0" + traslated;
         return traslated;
     }
-
-    //Ej: "1" = "02"
     private static String traslateDay(String day) throws Exception {
         if(day.length() == 1) return "0" + day;
         else return day;
-    }
-
-    @Override
-    public String toString(){
-
-        String str =
-                "ID: " + id + "\n" +
-                        "Title: " + title + "\n" +
-                        "Author: " + author + "\n" +
-                        "Date: " + String.valueOf(date) + "\n";
-
-        String substr = "";
-        for(String element : topics) substr += element + ", ";
-        substr = "Topics: " + substr.substring(0, substr.length()-2) + "\n";
-        str += substr;
-
-        substr = "";
-        for(String element : places) substr += element + ", ";
-        substr = "Places: " + substr.substring(0, substr.length()-2) + "\n";
-        str += substr;
-
-        substr = "";
-        for(String element : orgs) substr += element + ", ";
-        substr = "Orgs: " + substr.substring(0, substr.length()-2) + "\n";
-        str += substr;
-
-        substr = "";
-        for(String element : exchanges) substr += element + ", ";
-        substr = "Exchanges: " + substr.substring(0, substr.length()-2) + "\n";
-        str += substr;
-
-        str += "Path: " + path + "\n";
-
-        str += "\n----------------------------------------------------------------------";
-        return str;
     }
 
 }

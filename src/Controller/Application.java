@@ -18,13 +18,11 @@ public class Application {
     private Registry registry;
     private UIWindow window;
 
-    public Index getIndex (){ return index; }
-    public Browser getBrowser () { return browser; }
-
     public void run(){
         this.window = UIWindow.Instance(this);
         this.window.setVisible(true);
     }
+    public Index getIndex (){ return index; }
 
     public ArrayList<File> openRegistry(String path){
         try {
@@ -38,7 +36,6 @@ public class Application {
             return new ArrayList<>();
         }
     }
-
     public void indexFiles(ArrayList<File>files){
         try {
             index.indexFiles(files);
@@ -47,7 +44,6 @@ public class Application {
             UIWindow.Instance().showMessage("Error al indizar");
         }
     }
-
     public ArrayList<ResultBean> doSearch(QueryBean info) {
         try {
             if (index == null) {

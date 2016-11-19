@@ -7,15 +7,13 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-
 public class CustomTextField extends JTextField{
 
     private String placeholder = "";
     private Color phColor= new Color(72,117,210);
     private boolean band = true;
 
-    public CustomTextField(String placeholder)
-    {
+    public CustomTextField(String placeholder) {
         super();
         this.placeholder = placeholder;
         setVisible(true);
@@ -46,4 +44,5 @@ public class CustomTextField extends JTextField{
                 getMargin().left,
                 (getSize().height)/2 + getFont().getSize()/2 );
     }
+
 }

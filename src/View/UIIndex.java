@@ -2,7 +2,6 @@ package View;
 
 import Controller.Application;
 import View.Other.CustomTextField;
-import Model.Index;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -11,17 +10,10 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-
 public class UIIndex extends JPanel {
-
-
-    /*********************************************************************
-     * ************************** Parte visual ***************************
-     *********************************************************************/
 
     private JFileChooser fileChooser;
     private JFileChooser directoryChooser;
-    private JLabel labelAddFiles;
     private JList<File>listFiles;
     private CustomTextField textFieldIndexFile;
     private JButton buttonSearchIndex;
@@ -49,7 +41,7 @@ public class UIIndex extends JPanel {
         setBounds(20,75,965, 425);
     }
     private void setLabels(){
-        labelAddFiles = new JLabel("Archivos indizados");
+        JLabel labelAddFiles = new JLabel("Archivos indizados");
         labelAddFiles.setForeground(Color.WHITE);
         labelAddFiles.setBounds(25,25,800,25);
         labelAddFiles.setFont(new Font("Jokerman", Font.PLAIN, 15));
@@ -100,13 +92,6 @@ public class UIIndex extends JPanel {
         add(buttonIndexFiles);
         add(buttonSearchIndex);
     }
-
-
-    /*********************************************************************
-     * **************************** Funciones ****************************
-     *********************************************************************/
-
-
     private void setFunctions() {
         buttonAddFile.addActionListener(actionEvent -> { openFileChooser(); });
         buttonRemoveFile.addActionListener(actionEvent -> { removeFiles(); });
@@ -123,22 +108,27 @@ public class UIIndex extends JPanel {
         }
         else UIWindow.Instance().showMessage("Primero debes seleccionar un directorio");
     }
-
     private void addFiles(File [] files){
         for (File file : files)
             ((DefaultListModel<File>) listFiles.getModel()).addElement(file);
     }
-
     private void addFiles(ArrayList<File> files){
         for (File file : files)
             ((DefaultListModel<File>) listFiles.getModel()).addElement(file);
     }
-
     private void removeFiles(){
         int [] selectedIndices = listFiles.getSelectedIndices();
         if(selectedIndices.length > 0)
             for(int i : selectedIndices)
                 ((DefaultListModel<File>) listFiles.getModel()).remove(i);
+    }
+    private void openSelectedFile(){
+        try {
+            File file = listFiles.getSelectedValue();
+            Desktop.getDesktop().open(file);
+        }
+        catch (NullPointerException e){ UIWindow.Instance().showMessage("No hay ningun archivo seleccionado"); }
+        catch (Exception e ){ UIWindow.Instance().showMessage("No se ha podido abrir el archivo");}
     }
 
     private void openRegistryFile(){
@@ -150,7 +140,6 @@ public class UIIndex extends JPanel {
             textFieldIndexFile.setText(path);
         }
     }
-
     private void indexFiles(){
         if(app.getIndex() != null) {
             ArrayList<File> files = new ArrayList<>();
@@ -159,15 +148,6 @@ public class UIIndex extends JPanel {
             app.indexFiles(files);
         }
         else UIWindow.Instance().showMessage("Primero debes seleccionar un directorio");
-    }
-
-    private void openSelectedFile(){
-        try {
-            File file = listFiles.getSelectedValue();
-            Desktop.getDesktop().open(file);
-        }
-        catch (NullPointerException e){ UIWindow.Instance().showMessage("No hay ningun archivo seleccionado"); }
-        catch (Exception e ){ UIWindow.Instance().showMessage("No se ha podido abrir el archivo");}
     }
 
 }

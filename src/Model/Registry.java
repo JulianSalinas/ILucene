@@ -20,18 +20,11 @@ public class Registry {
     private ArrayList<String> files;
     private String path;
 
-    public String getPath() { return path; }
-
     public Registry (String path) throws Exception{
         this.path = path;
         this.files = loadFiles();
     }
-
-    public Registry () throws Exception{
-        this.path = System.getProperty("user.home") + "\\Desktop";
-        this.files = loadFiles();
-    }
-
+    public String getPath() { return path; }
     public ArrayList<File> getFiles() {
         ArrayList<File> oFiles = new ArrayList<>();
         for (String path : files)
@@ -49,11 +42,9 @@ public class Registry {
         }
         saveDocument(document);
     }
-
     public void add(File file){
         files.add(file.getAbsolutePath());
     }
-
     public boolean has(File file) {
         return files.contains(file.getAbsolutePath());
     }
@@ -63,7 +54,6 @@ public class Registry {
         if(xmlFile.exists()) return readDocument(buildDocument(xmlFile));
         else return new ArrayList<>();
     }
-
     private Document buildDocument(File file) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -71,7 +61,6 @@ public class Registry {
         document.getDocumentElement().normalize();
         return document;
     }
-
     private ArrayList<String> readDocument(Document document){
         NodeList paths = document.getElementsByTagName("FILE");
         ArrayList<String>files = new ArrayList<>();
@@ -79,7 +68,6 @@ public class Registry {
             files.add(paths.item(i).getTextContent());
         return files;
     }
-
     private Document buildDocument() throws Exception{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -88,7 +76,6 @@ public class Registry {
         document.setXmlVersion("1.0");
         return document;
     }
-
     private void saveDocument(Document document) throws Exception{
         Source source = new DOMSource(document);
         StreamResult result = new StreamResult(new File(path+"\\indexedFiles.xml"));
